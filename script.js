@@ -41,10 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
           squares[i + 1 - width].classList.contains('bomb')
         )
           total++;
-        
-        if (i > 10 && squares[i - width].classList.contains('bomb'))
-        
-        // add total of bombs surrounding square to a class attribute 
+
+        if (i > 10 && squares[i - width].classList.contains('bomb')) total++;
+        if (
+          i > 11 &&
+          !leftEdge &&
+          squares[i - 1 - width].classList.contains('bomb')
+        )
+          total++;
+        if (i < 98 && !rightEdge && squares[i + 1].classList.contains('bomb'))
+          total++;
+        if (
+          i < 90 &&
+          !leftEdge &&
+          squares[i - 1 + width].classList.contains('bomb')
+        )
+          total++;
+        if (
+          i < 88 &&
+          !rightEdge &&
+          squares[i + 1 + width].classList.contains('bomb')
+        )
+          total++;
+
+        // add total of bombs surrounding square to a class attribute
         squares[i].setAttribute('data', total);
         console.log(squares[i]);
       }
